@@ -1,5 +1,6 @@
 # Font Configuration
-font-size = 12
+font-size = 10
+font-family ="Iosevka NFM"
 
 # Window Configuration
 window-decoration = false

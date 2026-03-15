@@ -282,6 +282,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     Mod+Alt+P hotkey-overlay-title="Power off the monitors" { power-off-monitors; }
-    Mod+Alt+L hotkey-overlay-title="Lock the Screen: Hyprlock" { spawn "hyprlock" "--quiet"; }
+    Mod+Alt+L hotkey-overlay-title="Lock the Screen: Hyprlock" { spawn "hyprlock"; }
     Mod+Alt+S hotkey-overlay-title="Shutdown" {spawn "systemctl" "poweroff"; }
 }
