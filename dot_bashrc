@@ -304,5 +304,9 @@ alias clear="command clear; unset __was_printed"
 config && init
 } # End of bash prompt config
 
+export EDITOR=nvim
+export VISUAL=nvim
+export PATH="$HOME/bin:$HOME/.local/bin/:$PATH"
+
 # Keep this at the end of .bashrc
 eval "$(zoxide init bash)"
