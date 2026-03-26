@@ -6,12 +6,20 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+alias grep='rg --color=auto'
+alias cd='z'
 # PS1='[\u@\h \W]\$ '
 
+# Change this if we move to different terminal 
+# emulator
+if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
+    export TERM=xterm-256color
+fi
+# Load fzf bash integration
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 ### Setup (From github.com/nix-tricks)
-
+{ ## Prompt config start
 config() {
     # Define prompt segments
     declare -ag segments=(identity timestamp path git prompt)
@@ -294,3 +302,7 @@ alias clear="command clear; unset __was_printed"
 ### Initialize
 
 config && init
+} # End of bash prompt config
+
+# Keep this at the end of .bashrc
+eval "$(zoxide init bash)"
