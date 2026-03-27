@@ -15,13 +15,12 @@ alias cd='z'
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
     export TERM=xterm-256color
 fi
-# Load fzf bash integration
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export EDITOR=nvim
 export VISUAL=nvim
 export PATH="$HOME/bin:$HOME/.local/bin/:$PATH"
 
+eval "$(fzf --bash)"
 eval "$(starship init bash)"
 # Keep this at the end of .bashrc
 eval "$(zoxide init bash)"
