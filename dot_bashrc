@@ -12,13 +12,11 @@ alias cd='z'
 
 # Change this if we move to different terminal 
 # emulator
-if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
-    export TERM=xterm-256color
-fi
-
+export TERM=xterm-256color
+export COLORTERM=truecolor
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$HOME/bin:$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.bun/bin:$HOME/bin:$HOME/.local/bin/:$PATH"
 
 eval "$(fzf --bash)"
 eval "$(starship init bash)"
