@@ -1,0 +1,13 @@
+local ssh_domains = {
+{{- if and (index . "wezterm") (index .wezterm "ssh_domains") }}
+	{{- range .wezterm.ssh_domains }}
+	{
+		name = {{ .name | quote }},
+		remote_address = {{ .remote_address | quote }},
+		username = {{ .username | quote }},
+	},
+	{{- end }}
+{{- end }}
+}
+
+return ssh_domains
