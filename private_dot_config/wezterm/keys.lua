@@ -88,15 +88,33 @@ local keys = {
 
 	-- Toggle zoom for neovim
 	toogle_term(),
-
+	-- Font Scaling
+	{
+		key = "=",
+		mods = "CTRL",
+		action = wezterm.action.IncreaseFontSize,
+	},
 	{
 		key = "-",
 		mods = "CTRL",
+		action = wezterm.action.DecreaseFontSize,
+	},
+	{
+		key = "0",
+		mods = "CTRL",
+		action = wezterm.action.ResetFontSize,
+	},
+
+	-- Pane Splitting (Vertical)
+	-- Using CTRL+SHIFT+- for splitting keeps it separate from font control
+	{
+		key = "_", -- Note: On many layouts, SHIFT + - is underscore
+		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }),
 	},
 	{
-		key = "\\",
-		mods = "CTRL",
+		key = "|",
+		mods = "CTRL|SHIFT",
 		action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }),
 	},
 	{
@@ -108,11 +126,6 @@ local keys = {
 		key = "w",
 		mods = "CTRL",
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
-	},
-	{
-		key = "H",
-		mods = "CTRL",
-		action = wezterm.action.ActivateCopyMode,
 	},
 }
 
