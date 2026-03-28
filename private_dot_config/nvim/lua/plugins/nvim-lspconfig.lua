@@ -16,10 +16,14 @@ return {
           {
             "<leader>tp",
             function()
-              vim.lsp.buf.execute_command({
-                command = "tinymist.pinMain",
-                arguments = { vim.api.nvim_buf_get_name(0) },
-              })
+              local client = vim.lsp.get_clients({ name = "tinymist", bufnr = 0 })[1]
+              if client then
+                client:exec_cmd({
+                  title = "Pin current Typst file",
+                  command = "tinymist.pinMain",
+                  arguments = { vim.api.nvim_buf_get_name(0) },
+                }, { bufnr = 0 })
+              end
             end,
             desc = "Pin main Typst file",
             ft = "typst",
@@ -27,10 +31,14 @@ return {
           {
             "<leader>tu",
             function()
-              vim.lsp.buf.execute_command({
-                command = "tinymist.pinMain",
-                arguments = { vim.v.null },
-              })
+              local client = vim.lsp.get_clients({ name = "tinymist", bufnr = 0 })[1]
+              if client then
+                client:exec_cmd({
+                  title = "Unpin Main File", -- Added missing field
+                  command = "tinymist.pinMain",
+                  arguments = { vim.v.null },
+                }, { bufnr = 0 })
+              end
             end,
             desc = "Unpin Typst main file",
             ft = "typst",

@@ -16,6 +16,7 @@ config.font_size = 10
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.color_scheme = "Catppuccin Mocha"
 config.window_decorations = "NONE"
+config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
 config.adjust_window_size_when_changing_font_size = false
 
