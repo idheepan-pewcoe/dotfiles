@@ -15,6 +15,20 @@ config.initial_rows = 28
 config.font_size = 10
 config.font = wezterm.font("Iosevka Nerd Font Mono")
 config.color_scheme = "Catppuccin Mocha"
+-- Catppuccin Mocha Colors
+local catppuccin_mocha = {
+	base = "#1e1e2e",
+	mantle = "#181825",
+	crust = "#11111b",
+	surface0 = "#313244",
+	surface1 = "#45475a",
+	surface2 = "#585b70",
+	text = "#cdd6f4",
+	subtext0 = "#a6adc8",
+	blue = "#89b4fa",
+	sky = "#89dceb",
+	lavender = "#b4befe",
+}
 config.window_decorations = "NONE"
 config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
@@ -44,6 +58,9 @@ smart_splits.apply_to_config(config, {
 })
 
 -- tab bar style
+config.window_frame = {
+	font_size = 10,
+}
 -- -- The filled in variant of the < symbol
 -- local SOLID_LEFT_ARROW = wezterm.nerdfonts.nf_ple_upper_left_triangle
 local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
@@ -70,16 +87,12 @@ local function tab_title(tab_info)
 end
 
 wezterm.on("format-tab-title", function(tab, _, _, _, hover, max_width)
-	local edge_background = "#2a2a40"
-	local background = "#2a2a40"
-	local foreground = "#808080"
+	local edge_background = catppuccin_mocha.base
+	local background = catppuccin_mocha.crust
+	local foreground = catppuccin_mocha.surface1
 
 	if tab.is_active then
-		background = "#0a0a23"
-		foreground = "#c0c0c0"
-	elseif hover then
-		background = "#1b1b32"
-		foreground = "#909090"
+		foreground = catppuccin_mocha.sky
 	end
 
 	local edge_foreground = background
@@ -98,7 +111,7 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover, max_width)
 		{ Foreground = { Color = foreground } },
 		{ Text = "  " .. tab.tab_index + 1 .. " " .. ARROW_EXPAND_RIGHT .. " " .. title .. "  " },
 		{ Background = { Color = edge_foreground } },
-		{ Foreground = { Color = "#909090" } },
+		{ Foreground = { Color = foreground } },
 		{ Text = SLASH },
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
