@@ -132,7 +132,7 @@ local keys = {
 		mods = "CTRL",
 		action = wezterm.action.PromptInputLine({
 			description = "Enter new name for tab",
-			initial_value = "My Tab Name",
+			initial_value = "",
 			action = wezterm.action_callback(function(window, pane, line)
 				-- line will be `nil` if they hit escape without entering anything
 				-- An empty string if they just hit enter

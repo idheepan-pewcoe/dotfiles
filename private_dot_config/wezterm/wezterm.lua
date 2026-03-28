@@ -13,7 +13,7 @@ config.initial_rows = 28
 
 -- font size and color scheme.
 config.font_size = 10
-config.font = wezterm.font("Iosevka Nerd Font Mono")
+config.font = wezterm.font_with_fallback({ "Iosevka Nerd Font", weight = "medium" }, { family = "Noto Color Emoji" })
 config.color_scheme = "Catppuccin Mocha"
 -- Catppuccin Mocha Colors
 local catppuccin_mocha = {
@@ -61,15 +61,6 @@ smart_splits.apply_to_config(config, {
 config.window_frame = {
 	font_size = 10,
 }
--- -- The filled in variant of the < symbol
--- local SOLID_LEFT_ARROW = wezterm.nerdfonts.nf_ple_upper_left_triangle
-local SOLID_LEFT_ARROW = wezterm.nerdfonts.ple_lower_right_triangle
-
--- The filled in variant of the > symbol
--- local SOLID_RIGHT_ARROW = wezterm.nerdfonts.nf_ple_upper_right_triangle
-local SOLID_RIGHT_ARROW = wezterm.nerdfonts.ple_upper_left_triangle
-local SLASH = wezterm.nerdfonts.fae_slash
-local ARROW_EXPAND_RIGHT = wezterm.nerdfonts.md_arrow_expand_right
 
 -- This function returns the suggested title for a tab.
 -- It prefers the title that was set via `tab:set_title()`
@@ -86,9 +77,8 @@ local function tab_title(tab_info)
 	return tab_info.active_pane.title
 end
 
-wezterm.on("format-tab-title", function(tab, _, _, _, hover, max_width)
-	local edge_background = catppuccin_mocha.base
-	local background = catppuccin_mocha.crust
+wezterm.on("format-tab-title", function(tab, _, _, _, _, max_width)
+	local background = catppuccin_mocha.base
 	local foreground = catppuccin_mocha.surface1
 
 	if tab.is_active then
@@ -104,18 +94,18 @@ wezterm.on("format-tab-title", function(tab, _, _, _, hover, max_width)
 	title = wezterm.truncate_right(title, max_width - 2)
 
 	return {
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_LEFT_ARROW },
+		-- { Background = { Color = edge_background } },
+		-- { Foreground = { Color = edge_foreground } },
+		-- -- { Text = SOLID_LEFT_ARROW },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = "  " .. tab.tab_index + 1 .. " " .. ARROW_EXPAND_RIGHT .. " " .. title .. "  " },
+		{ Text = "  " .. tab.tab_index + 1 .. "    " .. title .. "  " },
 		{ Background = { Color = edge_foreground } },
 		{ Foreground = { Color = foreground } },
-		{ Text = SLASH },
-		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_RIGHT_ARROW },
+		-- { Text = SLASH },
+		-- { Background = { Color = edge_background } },
+		-- { Foreground = { Color = edge_foreground } },
+		-- { Text = SOLID_RIGHT_ARROW },
 	}
 end)
 -- Finally, return the configuration to wezterm:
