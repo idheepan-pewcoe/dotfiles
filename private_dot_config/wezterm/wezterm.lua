@@ -13,7 +13,7 @@ config.initial_rows = 28
 
 -- font size and color scheme.
 config.font_size = 10
-config.font = wezterm.font_with_fallback({ "Iosevka Nerd Font", weight = "medium" }, { family = "Noto Color Emoji" })
+config.font = wezterm.font_with_fallback({ "Iosevka Nerd Font", "Noto Color Emoji" })
 config.color_scheme = "Catppuccin Mocha"
 -- Catppuccin Mocha Colors
 local catppuccin_mocha = {
