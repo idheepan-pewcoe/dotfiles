@@ -120,12 +120,12 @@ local keys = {
 	{
 		key = "t",
 		mods = "CTRL|SHIFT",
-		action = wezterm.action.SpawnCommandInNewTab({ cwd = wezterm.home_dir }),
+		action = wezterm.action.SpawnTab("CurrentPaneDomain"),
 	},
 	{
 		key = "w",
 		mods = "CTRL",
-		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+		action = wezterm.action.CloseCurrentTab({ confirm = false }),
 	},
 	{
 		key = "t",
