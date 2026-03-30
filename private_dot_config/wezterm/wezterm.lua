@@ -36,6 +36,7 @@ config.adjust_window_size_when_changing_font_size = false
 
 config.keys = require("keys")
 config.ssh_domains = require("ssh_domains")
+config.unix_domains = require("unix_domains")
 -- you can put the rest of your Wezterm config here
 smart_splits.apply_to_config(config, {
 	-- the default config is here, if you'd like to use the default keys,
