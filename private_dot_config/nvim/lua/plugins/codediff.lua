@@ -11,5 +11,10 @@ return {
         desc = "CodeDiff",
       },
     },
+    opts = {
+      explorer = {
+        view_mode = "tree",
+      },
+    },
   },
 }
