@@ -5,6 +5,9 @@ local ssh_domains = {
 		name = {{ .name | quote }},
 		remote_address = {{ .remote_address | quote }},
 		username = {{ .username | quote }},
+    {{- if index . "remote_wezterm_path" }}
+		remote_wezterm_path = {{ .remote_wezterm_path | quote }},
+		{{- end }}
 	},
 	{{- end }}
 {{- end }}
