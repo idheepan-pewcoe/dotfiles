@@ -2,6 +2,18 @@ return {
   "neovim/nvim-lspconfig",
   opts = {
     servers = {
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            inlayHints = {
+              lifetimeElisionHints = {
+                enable = "always",
+                useParameterNames = true,
+              },
+            },
+          },
+        },
+      },
       -- Add tinymist configuration
       tinymist = {
         -- Use Mason-installed tinymist
